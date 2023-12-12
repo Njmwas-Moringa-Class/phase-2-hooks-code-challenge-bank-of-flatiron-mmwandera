@@ -35,13 +35,27 @@ function AccountContainer() {
     setFilteredTransactions(filtered);
   }
 
+  // Function to delete a transaction from the list
+  const handleDelete = (id) => {
+    // Filter out the deleted transaction
+    const updatedTransactions = transactions.filter(transaction => transaction.id !== id);
+    setTransactions(updatedTransactions);
+    setFilteredTransactions(updatedTransactions);
+
+    // Delete the transaction from the backend
+    fetch(`http://localhost:8001/transactions/${id}`, {
+      method: "DELETE",
+    })
+      .then(response => response.json())
+      .then(data => console.log("Transaction deleted successfully:", data))
+      .catch(error => console.error("Error deleting transaction:", error));
+  };
+
   return (
     <div>
       <Search onSearch={handleSearch}/>
-      {/* Pass transactions and addTransaction function as props */}
       <AddTransactionForm transactions={transactions} addTransaction={addTransaction} />
-      {/* Pass transactions as a prop */}
-      <TransactionsList transactions={filteredTransactions} />
+      <TransactionsList transactions={filteredTransactions} onDelete={handleDelete}/>
     </div>
   );
 }

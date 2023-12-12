@@ -1,7 +1,12 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList( { transactions } ) {
+function TransactionsList( { transactions, onDelete } ) {
+
+  const handleDelete = (id) => {
+    // Call the onDelete function passed as a prop
+    onDelete(id);
+  }
 
   return (
     <table className="ui celled striped padded table">
@@ -21,14 +26,17 @@ function TransactionsList( { transactions } ) {
           </th>
         </tr>
         {/* render a list of <Transaction> components here */}
-        {transactions.map(transaction => (
+        {transactions.map((transaction) => (
           <Transaction
             key={transaction.id}
             date={transaction.date}
             description={transaction.description}
             category={transaction.category}
             amount={transaction.amount}
-          />
+          >
+            {/* Pass the handleDelete function as a prop */}
+            <button onClick={() => handleDelete(transaction.id)}>Delete</button>
+          </Transaction>
         ))}
       </tbody>
     </table>

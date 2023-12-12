@@ -22,13 +22,6 @@
       "amount": -10.55
     },
     {
-      "id": 4,
-      "date": "2019-12-04",
-      "description": "Sunglasses, Urban Outfitters",
-      "category": "Fashion",
-      "amount": -24.99
-    },
-    {
       "id": 5,
       "date": "2019-12-06",
       "description": "Venmo, Alice Pays you for Burrito",
@@ -85,46 +78,11 @@
       "amount": -975
     },
     {
-      "date": "",
-      "description": "mm",
-      "category": "ff",
-      "amount": 0.02,
+      "date": "2023-12-12",
+      "description": "Mans just here init",
+      "category": "Mandem",
+      "amount": 0.17,
       "id": 13
-    },
-    {
-      "date": "",
-      "description": "",
-      "category": "",
-      "amount": 0,
-      "id": 14
-    },
-    {
-      "date": "0009-08-06",
-      "description": "t",
-      "category": "rf",
-      "amount": 0.02,
-      "id": 15
-    },
-    {
-      "date": "",
-      "description": "",
-      "category": "",
-      "amount": 0,
-      "id": 16
-    },
-    {
-      "date": "",
-      "description": "",
-      "category": "",
-      "amount": 0,
-      "id": 17
-    },
-    {
-      "date": "",
-      "description": "",
-      "category": "",
-      "amount": 0,
-      "id": 18
     }
   ]
 }
