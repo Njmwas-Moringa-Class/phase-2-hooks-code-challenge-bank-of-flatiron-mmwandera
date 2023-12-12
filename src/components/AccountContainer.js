@@ -51,11 +51,21 @@ function AccountContainer() {
       .catch(error => console.error("Error deleting transaction:", error));
   };
 
+    // Function to sort transactions
+    const handleSort = (key, order) => {
+      const sorted = [...filteredTransactions].sort((a, b) => {
+        const valueA = a[key].toLowerCase();
+        const valueB = b[key].toLowerCase();
+        return order === "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+      });
+      setFilteredTransactions(sorted);
+    };
+
   return (
     <div>
       <Search onSearch={handleSearch}/>
       <AddTransactionForm transactions={transactions} addTransaction={addTransaction} />
-      <TransactionsList transactions={filteredTransactions} onDelete={handleDelete}/>
+      <TransactionsList transactions={filteredTransactions} onDelete={handleDelete} onSort={handleSort}/>
     </div>
   );
 }

@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Transaction from "./Transaction";
 
-function TransactionsList( { transactions, onDelete } ) {
+function TransactionsList( { transactions, onDelete, onSort } ) {
+
+  const [sortOrder, setSortOrder] = useState("asc");
+
+  const handleSort = (key) => {
+    // Toggle the sort order between asc and desc
+    const newOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newOrder);
+
+    // Call the onSort function passed as a prop
+    onSort(key, newOrder);
+  };
 
   const handleDelete = (id) => {
     // Call the onDelete function passed as a prop
@@ -13,16 +24,16 @@ function TransactionsList( { transactions, onDelete } ) {
       <tbody>
         <tr>
           <th>
-            <h3 className="ui center aligned header">Date</h3>
+            <h3 className="ui center aligned header" onClick={() => handleSort("date")}>Date</h3>
           </th>
           <th>
-            <h3 className="ui center aligned header">Description</h3>
+            <h3 className="ui center aligned header" onClick={() => handleSort("description")}>Description</h3>
           </th>
           <th>
-            <h3 className="ui center aligned header">Category</h3>
+            <h3 className="ui center aligned header" onClick={() => handleSort("category")}>Category</h3>
           </th>
           <th>
-            <h3 className="ui center aligned header">Amount</h3>
+            <h3 className="ui center aligned header" onClick={() => handleSort("amount")}>Amount</h3>
           </th>
         </tr>
         {/* render a list of <Transaction> components here */}
